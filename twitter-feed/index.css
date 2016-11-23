@@ -1,0 +1,123 @@
+/*
+*Author : Shivangi Das
+*Date : 22/11/2016
+*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 40px;
+ }
+footer{
+ /* Set the fixed height of the footer;
+ make sure it sticks to the bottom of the page*/
+  height: 40px;
+}
+/*for the icon in search*/
+input {
+ 
+	font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+
+/* webkit solution */
+::-webkit-input-placeholder { text-align:right; }
+/* mozilla solution */
+input:-moz-placeholder { text-align:right; }
+
+
+.rounded{
+	border-radius: 30px;
+	}
+/*twitter colors*/
+.ProfileCardStats-statLabel {
+    color: #8899a6;
+    font-size: 10px;
+    letter-spacing: .02em;
+    overflow: hidden;
+    text-transform: uppercase;
+    transition: color .15s ease-in-out;
+}
+/*make these section look like pages*/
+.tweetSection, .StatSection{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/*light colors for icons*/
+span.time, .username,.retweetCount,.more{
+	font-size: 12px;
+    color: #8899a6;
+    white-space: nowrap;
+}
+.name{
+	font-weight: bold;
+    color: black;
+}
+.icon{
+	color: #aab8c2;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+}
+.iconColor{
+    color: black;
+}
+
+
+.fa-twitter,.selectedRetweet{
+	color: #1da1f2;
+}
+.fa-star.selectedStar{
+    color:gold;
+}
+.fa-flash{
+    background-color: #1da1f2;
+}
+/*circular border for icons*/
+.fa-border{
+	border-radius: 1.1em;
+}
+/*image of the logged in user*/
+.User{
+	max-height: 2.5rem;
+	max-width: 2.5rem;	
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+.tweetBird{
+    text-align: right;
+    }
+/*set video height and width for responsiveness*/
+video{
+    max-height: 216px;
+    max-width: 384px;
+}
+}
+/* others */
+@media (min-width: 768px) {
+.tweetBird{
+    text-align: center;
+    }
+video{
+    max-height: 360px;
+    max-width: 640px;
+}
+}
+/*in case sm-hide doesn't work, make us of hideDiv*/
+.hideDiv{
+    display: none;
+}
+.activeNav{
+    border-bottom-color: #0084B4;
+    border-bottom: 5px solid #1b95e0;
+}

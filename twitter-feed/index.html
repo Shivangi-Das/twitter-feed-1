@@ -1,0 +1,178 @@
+<!--
+Author : Shivangi Das
+Date : 22/11/2016
+-->
+<!DOCTYPE html>
+<html lang="en" ng-app="twitterFeed">
+  	<head>
+	  	<title>Twitter-Feed</title>
+	  	<meta charset="utf-8">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	  	<link href="https://unpkg.com/basscss@7.1.1/css/basscss.min.css" rel="stylesheet">
+	  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  	<link rel="stylesheet" href="index.css" type="text/css">
+	</head>
+	<body class="bg-darken-2">
+
+	<!-- header navigation area -->
+		<nav class="clearfix p1 bg-white">
+			<div class="hideDiv sm-col-4 inline burgerMenu">
+				<div class="relative inline-block" data-disclosure>
+				  <i class="fa fa-bars fa-1x"></i>
+				</div>
+			</div>
+  			<div class="sm-col sm-col-6 md-col-4 lg-col-4 inline">
+  			<!-- Couldn't find the compose icon -->
+	  			<a href="#" class="composeIcon border-right left px1 ">
+					<i class="fa fa-flash fa-1x fa-inverse fa-pull-left fa-border"></i>
+				</a>
+  				<a href="#" class="left px1 iconColor">
+				  <i class="fa fa-bell-o fa-1x fa-pull-left fa-border"></i>
+			    </a>
+			    <a href="#" class="left px1 iconColor">
+			   	 <i class="fa fa-envelope-o fa-1x fa-pull-left fa-border" aria-hidden="true"></i>
+			    </a>
+			    <a href="#" class=" left px1 iconColor">
+			    	<i class="fa fa-hashtag fa-1x fa-pull-left fa-border" aria-hidden="true"></i>
+			    </a>
+		  	</div>
+		   	<div class="sm-col-1 right hideDiv px1 searchDivforPhone ">
+				   	 <i class="fa fa-search fa-1x"></i>
+			</div>
+			<div class="sm-col sm-col-1 md-col-4 lg-col-4 inline tweetBird">
+			  	<a href="#" class=" ">
+			  		<i class="fa fa-twitter fa-2x"  aria-hidden="true"></i>
+			 	</a>
+			</div>
+		 
+		 	<div class="sm-col-right md-col-4 lg-col-4 inline right searchDiv">
+				<div class="  sm-col-12 md-col-12 lg-col-12 inline ">
+					<img src="images/image2.png" class="circle User right px1" alt="Shivi" />
+		   			 <input type="search" id="search-input" class=" field rounded right" placeholder="Search &#xF002;" >
+		  		
+		  		</div>
+		 	</div>
+		 	 
+		</nav>
+		<div data-details class="toggleMenu bg-white hideDiv" ng-controller="Navigation as navi">
+		    <div class="" ng-repeat="navTab in navi.tab">
+					<a href="#" class="btn block">
+						<span class="ProfileCardStats-statLabel u-block">
+						    	{{navTab.name}}
+							 </span><br>
+					    <span class="ProfileCardStats-statValue">
+						    	{{navTab.count}}
+					    </span>
+				    </a>
+			 </div>
+		</div>
+
+		<!-- give some space -->
+		<div class="py1">
+		</div>
+			<!-- main area -->
+		<div class="container">
+			<div class="flex flex-column" >
+			  <main class="flex-auto">
+			     <div class="flex ">
+				    <div class="col-2 sideSpaceDiv"><div class=""></div></div>
+				    <!-- tweet section -->
+				    <div class="flex-auto mx-auto ">
+				    	
+						<section class="StatSection navDiv" ng-controller="Navigation as navi">
+						<div  class="sm-flex center nowrap bg-white">
+						<!-- Using ng-repeat to remove redundancy -->
+						  <div class="flex-auto " ng-repeat="navTab in navi.tab">
+						    <a href="#" class="btn block navDivision">
+						    <span class="ProfileCardStats-statLabel u-block">
+						    	{{navTab.name}}
+						    </span><br>
+						     <span class="ProfileCardStats-statValue">
+						    	{{navTab.count}}
+						    </span>
+						    </a>
+						  </div>
+						</div>
+					</section>
+					<!-- give some space -->
+					<div class="py1">
+					</div>
+					    <!-- the panel containing tweets -->
+				    <section class="tweetSection bg-white" ng-controller="TweetController as details" >
+				    	
+				    	<div class=" flex p1 border-bottom" ng-repeat="tweets in details.tweet">
+					    	<!-- image -->
+					    	<div class="col-1">
+					    		<img class="circle" ng-src="{{tweets.image}}" alt="{{tweets.username}}"/>
+					    	</div>
+					    	
+					    	<div class="col-11 px1">
+					    		<!-- Name -->
+						    	<a href="#" class="name">
+						    		{{tweets.name}}
+						    	</a>
+						    	<!-- Username -->
+						    	<a href="#" class="username">
+						    		{{tweets.username}}
+						    	</a> 
+						    	<!-- Duration -->
+						    	<span class="time right">
+						    		{{tweets.time}}
+						    	</span> 
+					    		<br>
+					    		<!-- Tweet - Area for text, image and/or video -->
+					    		<span>
+					    			<p>
+					    			{{tweets.tweet}}
+					    			</p>
+					    		<video controls ng-show="tweets.showVideo">
+ 									 <source ng-src="{{tweets.video}}" type="video/mp4">
+ 								</video>
+ 								 <img class="rounded" ng-src="{{tweets.image1}}" ng-show="{{tweets.showImage}}"/>
+					    		</span>
+					    		<!-- Tweet-end -->
+					  		  	<br>
+					    		<i class="icon fa fa-share p1" aria-hidden="true"></i>
+					   		 	<i class="icon fa fa-star p1" aria-hidden="true"></i>
+					    		<!-- <i class="fa fa-retweet" aria-hidden="true"></i> -->
+					    		<i class="icon fa fa-refresh " aria-hidden="true"></i>
+					    		<label class="retweetCount" ng-show="{{tweets.showRetweet}}">
+					    			{{tweets.retweetCount}}
+					    		</label>
+					    		<i class="icon fa fa-expand right" aria-hidden="true"></i>
+					    		<span class="icon more">...</span>
+					    		<div class="commentArea hideDiv block">
+						    		<textarea class=" replyBox block col-12 field">
+						    			
+						    		</textarea>
+						    		<button class="btn btn-primary bg-teal submitButton">
+						    			Submit
+						    		</button> 
+						    	</div>
+					    	</div>
+
+				    	</div>
+
+				    </section>
+				    </div>
+				    <!-- tweet section end-->
+				    <div class="col-2 sideSpaceDiv"><div class=""></div></div>
+				  </div>
+			  </main>
+			
+			</div>
+		</div>
+		<!-- give some space -->
+		<div class="py1">
+		</div>
+		<!-- footer sticks to the bottom of the page -->
+		<footer class="center bg-white">
+			<i class="fa fa-copyright fa-1x"></i>
+				Shivangi Das
+		</footer>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</html>
+<!-- The End! -->
